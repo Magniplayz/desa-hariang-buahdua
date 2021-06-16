@@ -95,14 +95,16 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-newspaper"></i>
-                        <p>
-                            Artikel
-                        </p>
-                    </a>
-                </li>
+                <?php if ($akun['level'] == 1) : ?>
+                    <li class="nav-item">
+                        <a href="<?= base_url('Artikel') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Artikel
+                            </p>
+                        </a>
+                    </li>
+                <?php endif; ?>
                 <!-- <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>

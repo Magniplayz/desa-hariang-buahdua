@@ -80,7 +80,7 @@ class Akun extends CI_Controller
                 echo "Gagal Update akun";
             }
         } else {
-            $data['title'] = "Ubah Akun - TRAVERN";
+            $data['title'] = "Ubah Akun - Hariang Buahdua";
             $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
             $data['data_akun'] = $this->db->get_where('tb_akun', ['id_akun' => $id_akun])->row_array();
             $this->load->view('Templates/01_Header', $data);

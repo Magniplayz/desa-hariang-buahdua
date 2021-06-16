@@ -17,6 +17,8 @@
 <script src="<?= base_url('assets') ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url('assets') ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url('assets') ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Summernote -->
+<script src="<?= base_url('assets') ?>/plugins/summernote/summernote-bs4.min.js"></script>
 <script>
     $(function() {
         $("#table").DataTable({
@@ -32,6 +34,10 @@
         //     "autoWidth": false,
         //     "responsive": true,
         // });
+    });
+    $(function() {
+        // Summernote
+        $('.textarea').summernote()
     });
 </script>
 </body>
