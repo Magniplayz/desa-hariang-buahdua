@@ -31,7 +31,7 @@
                                     Layanan
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Permohonan Surat</a>
+                                    <a class="dropdown-item" href="<?= base_url('Permohonan') ?>">Permohonan Surat</a>
                                     <a class="dropdown-item" href="<?= base_url('Pengaduan') ?>">Pengaduan</a>
                                 </div>
                             </li>

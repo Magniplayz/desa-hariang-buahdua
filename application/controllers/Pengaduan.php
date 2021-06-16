@@ -17,7 +17,7 @@ class Pengaduan extends CI_Controller
         $data['title'] = "Pengaduan - Hariang Buahdua";
         $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
         $this->db->join('tb_akun', 'tb_pengaduan.id_sekretaris = tb_akun.id_akun', 'left');
-        $data['pengaduan'] = $this->db->get('tb_pengaduan')->result_array();
+        $data['pengaduan'] = $this->db->get_where('tb_pengaduan', ['id_pengadu' => $this->session->userdata('id_akun')])->result_array();
         $this->load->view('Templates/01_Header', $data);
         $this->load->view('Templates/02_Navbar');
         $this->load->view('Pengaduan/Index');
@@ -88,13 +88,13 @@ class Pengaduan extends CI_Controller
         }
     }
 
-    public function delete($id_akun)
+    public function delete($id_pengaduan)
     {
-        $delete = $this->db->delete('akun', ['id_akun' => $id_akun]);
+        $delete = $this->db->delete('tb_pengaduan', ['id_pengaduan' => $id_pengaduan]);
         if ($delete) {
-            redirect('Akun');
+            redirect('Pengaduan');
         } else {
-            echo 'Gagal Hapus Akun';
+            echo 'Gagal Hapus Pengaduan';
         }
     }
 }

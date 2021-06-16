@@ -93,7 +93,7 @@ class Akun extends CI_Controller
 
     public function delete($id_akun)
     {
-        $delete = $this->db->delete('akun', ['id_akun' => $id_akun]);
+        $delete = $this->db->delete('tb_akun', ['id_akun' => $id_akun]);
         if ($delete) {
             redirect('Akun');
         } else {
