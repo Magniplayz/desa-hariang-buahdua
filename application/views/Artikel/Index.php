@@ -8,13 +8,13 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="row">
                         <div class="col-sm-4 col-md-4 col-lg-4">
-                            <a href="<?= base_url('Home/artikel/Info_Program') ?>" class="btn btn-flat btn-primary btn-block">Info Program</a>
+                            <a href="<?= base_url('Home/artikel/Info_Program') ?>" class="btn btn-flat btn-light btn-block shadow">Info Program</a>
                         </div>
                         <div class="col-sm-4 col-md-4 col-lg-4">
-                            <a href="<?= base_url('Home/artikel/Agenda') ?>" class="btn btn-flat btn-danger btn-block">Agenda</a>
+                            <a href="<?= base_url('Home/artikel/Agenda') ?>" class="btn btn-flat btn-light btn-block shadow">Agenda</a>
                         </div>
                         <div class="col-sm-4 col-md-4 col-lg-4">
-                            <a href="<?= base_url('Home/artikel/Berita') ?>" class="btn btn-flat btn-success btn-block">Berita</a>
+                            <a href="<?= base_url('Home/artikel/Berita') ?>" class="btn btn-flat btn-light btn-block shadow">Berita</a>
                         </div>
                     </div>
                 </div>
