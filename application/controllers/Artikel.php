@@ -120,6 +120,6 @@ class Artikel extends CI_Controller
             return $this->upload->data("file_name");
         }
 
-        return "default.jpg";
+        return "default.png";
     }
 }

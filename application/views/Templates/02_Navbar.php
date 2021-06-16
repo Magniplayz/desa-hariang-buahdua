@@ -25,9 +25,17 @@
                         <li class="nav-item">
                             <a href="<?= base_url('Home/artikel') ?>" class="nav-link">Artikel</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Layanan</a>
-                        </li>
+                        <?php if ($this->session->userdata('id_akun') != null) : ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Layanan
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Permohonan Surat</a>
+                                    <a class="dropdown-item" href="#">Pengaduan</a>
+                                </div>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
 
