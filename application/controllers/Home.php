@@ -11,7 +11,7 @@ class Home extends CI_Controller
     public function index()
     {
         $data['title'] = "Home - Hariang Buahdua";
-        // $data['pembeli'] = $this->db->get_where('pembeli', ['id_pembeli' => $this->session->userdata('id_pembeli')])->row_array();
+        $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
         $this->load->view('Templates/01_Header', $data);
         $this->load->view('Templates/02_Navbar');
         $this->load->view('Home/Index');
@@ -22,7 +22,6 @@ class Home extends CI_Controller
     public function informasi()
     {
         $data['title'] = "Home - Hariang Buahdua";
-        // $data['pembeli'] = $this->db->get_where('pembeli', ['id_pembeli' => $this->session->userdata('id_pembeli')])->row_array();
         $this->load->view('Templates/01_Header', $data);
         $this->load->view('Templates/02_Navbar');
         $this->load->view('Informasi/Index');

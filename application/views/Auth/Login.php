@@ -1,12 +1,12 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Hariang</b>Buahdua</a>
+            <a href="#"><b>Hariang</b>Buahdua</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Login Khusus Admin</p>
+                <p class="login-box-msg">Silahkan Login</p>
 
                 <form action="" method="post">
                     <label class="text-danger"><?= form_error('username') ?></label>
@@ -29,9 +29,11 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-danger btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>
                     </div>
+                    <hr>
+                    <a href="<?= base_url('Auth/register') ?>">Belum memiliki akun? Daftar sekarang</a>
                 </form>
                 <br>
             </div>

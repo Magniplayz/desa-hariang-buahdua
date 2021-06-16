@@ -41,13 +41,22 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <div class="dropdown-divider"></div>
-                            <a href="<?= base_url('Auth/admin') ?>" class="dropdown-item">
-                                <i class="fas fa-user-cog mr-2"></i>Admin
-                            </a>
+                            <?php if ($akun != null) : ?>
+                                <a href="<?= base_url('Profil') ?>" class="dropdown-item">
+                                    <i class="fas fa-user-cog mr-2"></i>Profil
+                                </a>
+                            <?php endif; ?>
                             <div class="dropdown-divider"></div>
-                            <a href="<?= base_url('Auth/sekretaris') ?>" class="dropdown-item">
-                                <i class="fas fa-user-tag mr-2"></i>Sekretaris
-                            </a>
+                            <?php if ($akun == null) : ?>
+                                <a href="<?= base_url('Auth') ?>" class="dropdown-item">
+                                    <i class="fas fa-user mr-2"></i>Login
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($akun != null) : ?>
+                                <a href="<?= base_url('Auth') ?>" class="dropdown-item">
+                                    <i class="fas fa-exit mr-2"></i>Logout
+                                </a>
+                            <?php endif; ?>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>

@@ -10,64 +10,38 @@ class Auth extends CI_Controller
         $this->load->library("form_validation");
     }
 
-    public function sekretaris()
+    public function index()
     {
         //Validasi
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('pass', 'Password', 'required');
 
         if ($this->form_validation->run() == true) {
             $_POST = $this->input->post();
-            $email = $_POST['email'];
+            $username = $_POST['username'];
             $pass = $_POST['pass'];
-            $this->db->where('email_pembeli', $email);
-            $this->db->where('pass_pembeli', $pass);
-            $login = $this->db->get('pembeli')->row_array();
+            $this->db->where('username', $username);
+            $this->db->where('pass_akun', $pass);
+            $login = $this->db->get('tb_akun')->row_array();
             if ($login) {
-                //Data yang akan masuk session
+                // Data yang akan masuk session
                 $data = [
-                    'id_pembeli' => $login['id_pembeli']
+                    'id_akun' => $login['id_akun'],
+                    'level' => $login['level']
                 ];
                 $this->session->set_userdata($data);
-                redirect('Home');
+                if ($login['level'] == 0) {
+                    redirect('Home');
+                } else {
+                    redirect('Dashboard');
+                }
             } else {
                 echo "Gagal Login";
             }
         } else {
-            $data['title'] = "Login Sekretaris - Hariang Buahdua";
+            $data['title'] = "Login - Hariang Buahdua";
             $this->load->view('Templates/01_Header', $data);
-            $this->load->view('Auth/LoginSekretaris');
-            $this->load->view('Templates/09_JS');
-        }
-    }
-
-    public function admin()
-    {
-        //Validasi
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('pass', 'Password', 'required');
-
-        if ($this->form_validation->run() == true) {
-            $_POST = $this->input->post();
-            $email = $_POST['email'];
-            $pass = $_POST['pass'];
-            $this->db->where('email_karyawan', $email);
-            $this->db->where('pass_karyawan', $pass);
-            $login = $this->db->get('karyawan')->row_array();
-            if ($login) {
-                //Data yang akan masuk session
-                $data = [
-                    'id_karyawan' => $login['id_karyawan']
-                ];
-                $this->session->set_userdata($data);
-                redirect('Dashboard');
-            } else {
-                echo "Gagal Login";
-            }
-        } else {
-            $data['title'] = "login Admin - Hariang Buahdua";
-            $this->load->view('Templates/01_Header', $data);
-            $this->load->view('Auth/LoginAdmin');
+            $this->load->view('Auth/Login');
             $this->load->view('Templates/09_JS');
         }
     }
@@ -76,24 +50,18 @@ class Auth extends CI_Controller
     {
         //Validasi
         $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pembeli.email_pembeli]');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('no_hp', 'No HP', 'required', 'numeric');
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[tb_akun.username]');
         $this->form_validation->set_rules('pass', 'Password', 'required');
 
         if ($this->form_validation->run() == true) {
             //Proses Simpan Pembeli
             $_POST = $this->input->post();
             $data = [
-                'id_pembeli' => 'u-' . substr(str_shuffle(str_repeat($x = '0123456789', ceil(5 / strlen($x)))), 1, 5),
-                'nama_pembeli' => $_POST['nama'],
-                'email_pembeli' => $_POST['email'],
-                'alamat_pembeli' => $_POST['alamat'],
-                'nohp_pembeli' => $_POST['no_hp'],
-                'pin_pembeli' => substr(str_shuffle(str_repeat($x = '0123456789', ceil(4 / strlen($x)))), 1, 4),
-                'pass_pembeli' => $_POST['pass']
+                'nama_akun' => $_POST['nama'],
+                'username' => $_POST['username'],
+                'pass_akun' => $_POST['pass']
             ];
-            $register = $this->db->insert('pembeli', $data);
+            $register = $this->db->insert('tb_akun', $data);
             if ($register) {
                 redirect('Auth');
             } else {
@@ -101,7 +69,7 @@ class Auth extends CI_Controller
             }
         } else {
             //Jika Validasi Error, maka kembali ke tampilan
-            $data['title'] = "Register - TRAVERN";
+            $data['title'] = "Register - Hariang Buahdua";
             $this->load->view('Templates/01_Header', $data);
             $this->load->view('Auth/Register');
             $this->load->view('Templates/09_JS');
