@@ -12,6 +12,10 @@ class Home extends CI_Controller
     {
         $data['title'] = "Home - Hariang Buahdua";
         $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
+        $this->db->where('id_pemohon', $this->session->userdata('id_akun'));
+        $data['jml_permohonan'] = $this->db->count_all_results('tb_permohonan');
+        $this->db->where('id_pengadu', $this->session->userdata('id_akun'));
+        $data['jml_pengaduan'] = $this->db->count_all_results('tb_pengaduan');
         $this->load->view('Templates/01_Header', $data);
         $this->load->view('Templates/02_Navbar');
         $this->load->view('Home/Index');
