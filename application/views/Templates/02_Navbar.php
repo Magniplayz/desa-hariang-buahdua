@@ -49,11 +49,6 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <div class="dropdown-divider"></div>
-                            <?php if ($akun != null) : ?>
-                                <a href="<?= base_url('Profil') ?>" class="dropdown-item">
-                                    <i class="fas fa-user-cog mr-2"></i>Profil
-                                </a>
-                            <?php endif; ?>
                             <div class="dropdown-divider"></div>
                             <?php if ($akun == null) : ?>
                                 <a href="<?= base_url('Auth') ?>" class="dropdown-item">

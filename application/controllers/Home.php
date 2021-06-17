@@ -23,6 +23,8 @@ class Home extends CI_Controller
     {
         $data['title'] = "Home - Hariang Buahdua";
         $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
+        $this->db->limit(1);
+        $data['profil'] = $this->db->get('tb_profil')->row_array();
         $this->load->view('Templates/01_Header', $data);
         $this->load->view('Templates/02_Navbar');
         $this->load->view('Informasi/Index');
