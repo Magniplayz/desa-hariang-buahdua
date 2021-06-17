@@ -89,7 +89,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('Harga') ?>" class="nav-link">
+                            <a href="<?= base_url('Pengaduan/index_sekretaris') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengaduan</p>
                             </a>
