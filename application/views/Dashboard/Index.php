@@ -22,29 +22,33 @@
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-clipboard"></i></span>
+                    <a href="<?= base_url('Permohonan/index_sekretaris') ?>">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-clipboard"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Permohonan</span>
-                            <span class="info-box-number">
-                                10
-                            </span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Permohonan</span>
+                                <span class="info-box-number">
+                                    <?= $jml_permohonan ?>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
-                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-exclamation"></i></span>
+                    <a href="<?= base_url('Pengaduan/index_sekretaris') ?>">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-exclamation"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Pengaduan</span>
-                            <span class="info-box-number">2</span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Pengaduan</span>
+                                <span class="info-box-number"><?= $jml_pengaduan ?></span>
+                            </div>
+                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
+                        <!-- /.info-box -->
+                    </a>
                 </div>
                 <!-- /.col -->
 
@@ -52,16 +56,18 @@
                 <div class="clearfix hidden-md-up"></div>
 
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
-                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-newspaper"></i></span>
+                    <a href="<?= base_url('Artikel') ?>">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-newspaper"></i></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Artikel</span>
-                            <span class="info-box-number">50</span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Artikel</span>
+                                <span class="info-box-number"><?= $jml_artikel ?></span>
+                            </div>
+                            <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
+                        <!-- /.info-box -->
+                    </a>
                 </div>
                 <!-- /.col -->
             </div>
