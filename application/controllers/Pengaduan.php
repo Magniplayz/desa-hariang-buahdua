@@ -69,7 +69,8 @@ class Pengaduan extends CI_Controller
     public function selesai($id_pengaduan)
     {
         $data = [
-            'status_pengaduan' => 'Sudah ditindak lanjuti'
+            'status_pengaduan' => 'Sudah ditindak lanjuti',
+            'id_sekretaris' => $this->session->userdata('id_akun')
         ];
         $this->db->set($data);
         $this->db->where('id_pengaduan', $id_pengaduan);

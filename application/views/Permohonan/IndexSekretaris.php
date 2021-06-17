@@ -24,8 +24,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">List Permohonan Surat - <?= $akun['nama_akun'] ?></h3>
-                            <a href="<?= base_url('Permohonan/add') ?>" class="btn btn-primary btn-flat float-right"><i class="fas fa-plus"></i></a>
+                            <h3 class="card-title">List Permohonan Surat Masyarakat</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -35,8 +34,9 @@
                                         <th>No.</th>
                                         <th>Jenis</th>
                                         <th>Keterangan</th>
+                                        <th>File Pendukung</th>
                                         <th>Status</th>
-                                        <th>Sekretaris</th>
+                                        <th>Pemohon</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -47,13 +47,11 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $data['jenis_permohonan'] ?></td>
                                             <td><?= $data['keterangan_permohonan'] ?></td>
+                                            <td><img src="<?= base_url('upload/permohonan/') . $data['file_pendukung'] ?>" alt="" width="100"></td>
                                             <td><?= $data['status_permohonan'] ?></td>
                                             <td><?= $data['nama_akun'] ?></td>
                                             <td>
-                                                <a href="<?= base_url('Permohonan/delete/') . $data['id_permohonan'] ?>" class="btn btn-danger btn-flat"><i class="fas fa-trash" onclick="return confirm('Yakin akan menghapus permohonan?')"></i></a>
-                                                <?php if ($data['status_permohonan'] != 'Menunggu persetujuan' && $data['surat'] != null) : ?>
-                                                    <a target="__blank" href="<?= base_url('Permohonan/surat/') . $data['id_permohonan'] ?>" class="btn btn-success btn-flat"><i class="fas fa-print"></i></a>
-                                                <?php endif; ?>
+                                                <a href="<?= base_url('Permohonan/konfirmasi/') . $data['id_permohonan'] ?>" class="btn btn-primary btn-flat" title="Konfirmasi permohonan"><i class="fas fa-forward"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

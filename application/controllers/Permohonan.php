@@ -25,6 +25,19 @@ class Permohonan extends CI_Controller
         $this->load->view('Templates/09_JS');
     }
 
+    public function index_sekretaris()
+    {
+        $data['title'] = "Permohonan - Hariang Buahdua";
+        $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
+        $this->db->join('tb_akun', 'tb_permohonan.id_pemohon = tb_akun.id_akun', 'left');
+        $data['permohonan'] = $this->db->get_where('tb_permohonan', ['status_permohonan' => 'Menunggu persetujuan'])->result_array();
+        $this->load->view('Templates/01_Header', $data);
+        $this->load->view('Templates/03_Sidebar');
+        $this->load->view('Permohonan/IndexSekretaris');
+        $this->load->view('Templates/07_Footer');
+        $this->load->view('Templates/09_JS');
+    }
+
     public function add()
     {
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
@@ -55,40 +68,32 @@ class Permohonan extends CI_Controller
         }
     }
 
-    public function edit($id_artikel)
+    public function konfirmasi($id_permohonan)
     {
-        $this->form_validation->set_rules('judul', 'Judul Artikel', 'required');
-
+        $this->form_validation->set_rules('surat', 'Surat', 'required');
         if ($this->form_validation->run() == true) {
             $_POST = $this->input->post();
-            $img = "";
-            if (!empty($_FILES["image"]["name"])) {
-                $img = $this->_uploadImage($_POST['judul'] . date("dmY-His"));
-            } else {
-                $img = $_POST["old_image"];
-            }
             $data = [
-                'judul_artikel' => $_POST['judul'],
-                'sampul_artikel' => $img,
-                'isi_artikel' => $_POST['isi'],
-                'kategori' => $_POST['kategori'],
-                'id_admin' => $this->session->userdata('id_akun')
+                'status_permohonan' => $_POST['status'],
+                'surat' => $_POST['surat'],
+                'id_sekretaris' => $this->session->userdata('id_akun')
             ];
             $this->db->set($data);
-            $this->db->where('id_artikel', $id_artikel);
-            $add = $this->db->update('tb_artikel');
+            $this->db->where('id_permohonan', $id_permohonan);
+            $add = $this->db->update('tb_permohonan');
             if ($add) {
-                redirect('Artikel');
+                redirect('Permohonan/index_sekretaris');
             } else {
-                echo "Gagal Update Artikel";
+                echo "Gagal Konfirmasi Permohonan";
             }
         } else {
-            $data['title'] = "Ubah Artikel - Hariang Buahdua";
+            $data['title'] = "Konfirmasi Permohonan - Hariang Buahdua";
             $data['akun'] = $this->db->get_where('tb_akun', ['id_akun' => $this->session->userdata('id_akun')])->row_array();
-            $data['artikel'] = $this->db->get_where('tb_artikel', ['id_artikel' => $id_artikel])->row_array();
+            $this->db->join('tb_akun', 'tb_permohonan.id_pemohon = tb_akun.id_akun', 'left');
+            $data['permohonan'] = $this->db->get_where('tb_permohonan', ['id_permohonan' => $id_permohonan])->row_array();
             $this->load->view('Templates/01_Header', $data);
-            $this->load->view('Templates/02_Navbar');
-            $this->load->view('Artikel/Edit');
+            $this->load->view('Templates/03_Sidebar');
+            $this->load->view('Permohonan/Konfirmasi');
             $this->load->view('Templates/07_Footer');
             $this->load->view('Templates/09_JS');
         }
@@ -121,5 +126,16 @@ class Permohonan extends CI_Controller
         }
 
         return "default.png";
+    }
+
+    public function surat($id_permohonan)
+    {
+        $data['title'] = "Surat Permohonan";
+
+        $data['permohonan'] = $this->db->get_where('tb_permohonan', ['id_permohonan' => $id_permohonan])->row_array();
+
+        $this->load->view('Templates/01_Header', $data);
+        $this->load->view('Permohonan/Surat');
+        $this->load->view('Templates/09_JS');
     }
 }
