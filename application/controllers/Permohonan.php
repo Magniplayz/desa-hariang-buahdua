@@ -49,7 +49,7 @@ class Permohonan extends CI_Controller
                 'jenis_permohonan' => $_POST['jenis'],
                 'keterangan_permohonan' => $_POST['keterangan'],
                 'status_permohonan' => 'Menunggu persetujuan',
-                'file_pendukung' => $this->_uploadImage($_POST['jenis'] . date("dmY-His"))
+                'file_pendukung' => $this->_uploadImage("Permohonan " . $_POST['jenis'] . date("dmY-His"))
             ];
             $add = $this->db->insert('tb_permohonan', $data);
             if ($add) {
@@ -112,7 +112,7 @@ class Permohonan extends CI_Controller
     private function _uploadImage($file_name)
     {
         $config['upload_path']          = './upload/permohonan/';
-        $config['allowed_types']        = 'gif|jpg|png|pdf';
+        $config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
         $config['file_name']            = $file_name;
         $config['overwrite']            = true;
         $config['max_size']             = 2048; // 2MB

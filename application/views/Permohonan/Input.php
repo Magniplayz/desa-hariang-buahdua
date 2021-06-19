@@ -31,7 +31,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="post" action="<?= base_url('Permohonan/add') ?>">
+                            <form method="post" action="<?= base_url('Permohonan/add') ?>" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">Jenis Permohonan:</label>
@@ -51,7 +51,7 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
-                                                <label class="custom-file-label" for="exampleInputFile">Contoh (Foto KK, KTP, Akta, Dll)</label>
+                                                <label class="custom-file-label" for="exampleInputFile">Contoh (Foto KK, KTP, Akta, Dll) Max 2MB</label>
                                             </div>
                                         </div>
                                     </div>

@@ -47,7 +47,9 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $data['jenis_permohonan'] ?></td>
                                             <td><?= $data['keterangan_permohonan'] ?></td>
-                                            <td><img src="<?= base_url('upload/permohonan/') . $data['file_pendukung'] ?>" alt="" width="100"></td>
+                                            <td>
+                                                <a target="__blank" href="<?= base_url('upload/permohonan/') . $data['file_pendukung'] ?>"><?= $data['file_pendukung'] ?></a>
+                                            </td>
                                             <td><?= $data['status_permohonan'] ?></td>
                                             <td><?= $data['nama_akun'] ?></td>
                                             <td>
