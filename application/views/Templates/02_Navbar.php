@@ -5,8 +5,7 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="<?= base_url() ?>" class="navbar-brand">
-                    <!-- <img src="" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-                    <span class="brand-text font-weight-light">LOGO</span>
+                    <img src="<?= base_url('assets/img/logo.png') ?>" alt="Hariang" class="" width="100">
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +55,7 @@
                                 </a>
                             <?php endif; ?>
                             <?php if ($akun != null) : ?>
-                                <a href="<?= base_url('Auth') ?>" class="dropdown-item">
+                                <a href="<?= base_url('Auth/logout') ?>" class="dropdown-item">
                                     <i class="fas fa-exit mr-2"></i>Logout
                                 </a>
                             <?php endif; ?>

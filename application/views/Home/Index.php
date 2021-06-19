@@ -5,11 +5,12 @@
     <div class="content">
         <div class="container">
             <div class="row py-5">
-                <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                     <h2>Selamat datang di website Desa Hariang Buahdua</h2>
+                    <hr>
                 </div>
-                <?php if ($akun['id_akun'] != null) : ?>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <?php if ($akun['id_akun'] != null) : ?>
                         <div class="row">
                             <div class="col-lg-3 col-6">
                                 <!-- small box -->
@@ -42,8 +43,12 @@
                             </div>
                             <!-- ./col -->
                         </div>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <img src="<?= base_url('assets/img/Home1.jpg') ?>" width="100%">
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

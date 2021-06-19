@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2021 at 07:25 PM
+-- Generation Time: Jun 19, 2021 at 06:15 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -73,6 +73,7 @@ CREATE TABLE `tb_pengaduan` (
   `id_pengadu` int(11) NOT NULL,
   `keterangan_pengaduan` text NOT NULL,
   `status_pengaduan` varchar(100) NOT NULL,
+  `bukti_pengaduan` text DEFAULT NULL,
   `id_sekretaris` int(11) DEFAULT NULL,
   `tgl_insert` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -81,8 +82,8 @@ CREATE TABLE `tb_pengaduan` (
 -- Dumping data for table `tb_pengaduan`
 --
 
-INSERT INTO `tb_pengaduan` (`id_pengaduan`, `id_pengadu`, `keterangan_pengaduan`, `status_pengaduan`, `id_sekretaris`, `tgl_insert`) VALUES
-(1, 1, 'Tetangga menggunakan knalpot berisik\r\n', 'Sudah ditindak lanjuti', 3, '2021-06-17 10:46:06');
+INSERT INTO `tb_pengaduan` (`id_pengaduan`, `id_pengadu`, `keterangan_pengaduan`, `status_pengaduan`, `bukti_pengaduan`, `id_sekretaris`, `tgl_insert`) VALUES
+(1, 1, 'Tetangga menggunakan knalpot berisik\r\n', 'Sudah ditindak lanjuti', NULL, 3, '2021-06-17 10:46:06');
 
 -- --------------------------------------------------------
 
@@ -186,13 +187,13 @@ ALTER TABLE `tb_artikel`
 -- AUTO_INCREMENT for table `tb_pengaduan`
 --
 ALTER TABLE `tb_pengaduan`
-  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
-  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
