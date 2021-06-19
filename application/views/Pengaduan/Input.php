@@ -31,12 +31,21 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="post" action="<?= base_url('Pengaduan/add') ?>">
+                            <form method="post" action="<?= base_url('Pengaduan/add') ?>" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">Keluhan:</label>
                                         <textarea name="keterangan" cols="30" rows="10" class="form-control"></textarea>
                                         <p class="text-danger"><?= form_error('email') ?></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Bukti Foto:</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                                                <label class="custom-file-label" for="exampleInputFile">Max 2MB</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Keterangan</th>
+                                        <th>Bukti Foto</th>
                                         <th>Status</th>
                                         <th>Pengadu</th>
                                         <th>Aksi</th>
@@ -44,6 +45,11 @@
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $data['keterangan_pengaduan'] ?></td>
+                                            <td>
+                                                <a href="<?= base_url('upload/pengaduan/') . $data['bukti_pengaduan'] ?>" target="__blank">
+                                                    <img src="<?= base_url('upload/pengaduan/') . $data['bukti_pengaduan'] ?>" width="100">
+                                                </a>
+                                            </td>
                                             <td><?= $data['status_pengaduan'] ?></td>
                                             <td><?= $data['nama_akun'] ?></td>
                                             <td>

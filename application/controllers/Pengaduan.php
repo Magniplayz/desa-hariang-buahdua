@@ -47,7 +47,8 @@ class Pengaduan extends CI_Controller
             $data = [
                 'id_pengadu' => $this->session->userdata('id_akun'),
                 'keterangan_pengaduan' => $_POST['keterangan'],
-                'status_pengaduan' => 'Sedang ditinjau'
+                'status_pengaduan' => 'Sedang ditinjau',
+                'bukti_pengaduan' => $this->_uploadImage("Pengaduan_" . date("dmY-His"))
             ];
             $add = $this->db->insert('tb_pengaduan', $data);
             if ($add) {
@@ -80,6 +81,25 @@ class Pengaduan extends CI_Controller
         } else {
             echo "Gagal konfirmasi";
         }
+    }
+
+    private function _uploadImage($file_name)
+    {
+        $config['upload_path']          = './upload/pengaduan/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $file_name;
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048; // 2MB
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('image')) {
+            return $this->upload->data("file_name");
+        }
+
+        return "default.png";
     }
 
     public function delete($id_pengaduan)
